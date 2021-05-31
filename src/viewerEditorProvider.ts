@@ -1,3 +1,4 @@
+import { TextDecoder } from 'util';
 import * as vscode from 'vscode';
 import { disposeAll } from './dispose';
 import { getWebViewContent } from './extension';
@@ -70,6 +71,15 @@ export class ViewerEditorProvider implements vscode.CustomEditorProvider<ViewerD
             });
         }));
 
+        listeners.push(document.onDidChangeContent(e => {
+            for (const panel of this.webviews.get(document.uri)) {
+                this.postMessage(panel, 'update', {
+                    edits: e.edits,
+                    content: e.content
+                });
+            }
+        }));
+
         document.onDidDispose(() => disposeAll(listeners));
 
         return document;
@@ -88,16 +98,18 @@ export class ViewerEditorProvider implements vscode.CustomEditorProvider<ViewerD
 
         webviewPanel.webview.onDidReceiveMessage(e => {
             if (e.type === 'ready') {
+                console.log('ready');
 				if (document.uri.scheme === 'untitled') {
-					this.postMessage(webviewPanel, 'init', {
+					this.postMessage(webviewPanel, 'init_untitiled', {
 						untitled: true,
 						editable: true,
 					});
 				} else {
 					const editable = vscode.workspace.fs.isWritableFileSystem(document.uri.scheme);
 
+                    const t = new TextDecoder('utf-8');
 					this.postMessage(webviewPanel, 'init', {
-						value: document.documentData,
+						value: t.decode(document.documentData),
 						editable,
 					});
 				}
@@ -121,9 +133,9 @@ export class ViewerEditorProvider implements vscode.CustomEditorProvider<ViewerD
 
 	private onMessage(document: ViewerDocument, message: any) {
 		switch (message.type) {
-			case 'stroke':
-				document.makeEdit(message as ViewerEdit);
-				return;
+			// case 'stroke':
+			// 	document.makeEdit(message as ViewerEdit);
+			// 	return;
 
 			case 'response':
 				{

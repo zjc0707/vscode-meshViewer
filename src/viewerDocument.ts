@@ -2,8 +2,7 @@ import * as vscode from "vscode";
 import { Disposable } from "./dispose";
 
 export interface ViewerEdit {
-	readonly color: string;
-	readonly stroke: ReadonlyArray<[number, number]>;
+	readonly context: string;
 }
 
 export interface DocumentDelegate {
@@ -90,30 +89,30 @@ export class ViewerDocument extends Disposable implements vscode.CustomDocument 
 		super.dispose();
 	}
 
-	/**
-	 * Called when the user edits the document in a webview.
-	 * 
-	 * This fires an event to notify VS Code that the document has been edited.
-	 */
-	makeEdit(edit: ViewerEdit) {
-		this._edits.push(edit);
+	// /**
+	//  * Called when the user edits the document in a webview.
+	//  * 
+	//  * This fires an event to notify VS Code that the document has been edited.
+	//  */
+	// makeEdit(edit: ViewerEdit) {
+	// 	this._edits.push(edit);
 
-		this._onDidChange.fire({
-			label: 'Stroke',
-			undo: async () => {
-				this._edits.pop();
-				this._onDidChangeDocument.fire({
-					edits: this._edits,
-				});
-			},
-			redo: async () => {
-				this._edits.push(edit);
-				this._onDidChangeDocument.fire({
-					edits: this._edits,
-				});
-			}
-		});
-	}
+	// 	this._onDidChange.fire({
+	// 		label: 'Stroke',
+	// 		undo: async () => {
+	// 			this._edits.pop();
+	// 			this._onDidChangeDocument.fire({
+	// 				edits: this._edits,
+	// 			});
+	// 		},
+	// 		redo: async () => {
+	// 			this._edits.push(edit);
+	// 			this._onDidChangeDocument.fire({
+	// 				edits: this._edits,
+	// 			});
+	// 		}
+	// 	});
+	// }
 
 	/**
 	 * Called by VS Code when the user saves the document.
