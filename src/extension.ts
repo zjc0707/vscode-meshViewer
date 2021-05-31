@@ -13,19 +13,13 @@ export function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "helloWorld" is now active!');
 
 	// The commandId parameter must match the command field in package.json
-	context.subscriptions.push(vscode.commands.registerCommand('helloWorld.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from helloWorld!');
-	}, ViewerEditorProvider.register(context)));
+	context.subscriptions.push(ViewerEditorProvider.register(context));
 }
 
 // this method is called when your extension is deactivated
 export function deactivate() {}
 
 export function getWebViewContent(context: vscode.ExtensionContext) {
-	// const templatePath = 'src/assets/test.html';
 	const templatePath = 'src/assets/examples/misc_animation_groups.html';
 	const resourcePath = path.join(context.extensionPath, templatePath);
     const dirPath = path.dirname(resourcePath);

@@ -10,21 +10,10 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:helloWorld.helloWorld",
-		"onCommand:jcWebView"
+		"onCustomEditor:jcWebView"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
-				"command": "helloWorld.helloWorld",
-				"title": "Hello World"
-			},
-			{
-				"command": "jcWebView",
-				"title": "jc webView"
-			}
-		],
 		"customEditors": [
 			{
 				"viewType": "jcWebView",

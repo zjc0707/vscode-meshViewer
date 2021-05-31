@@ -76,6 +76,7 @@ export class ViewerEditorProvider implements vscode.CustomEditorProvider<ViewerD
     }
     async resolveCustomEditor(document: ViewerDocument, webviewPanel: vscode.WebviewPanel, token: vscode.CancellationToken): Promise<void> {
         // throw new Error('Method not implemented.');
+        console.log('add', document.uri);
         this.webviews.add(document.uri, webviewPanel);
 
         webviewPanel.webview.options = {
