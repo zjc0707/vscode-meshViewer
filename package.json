@@ -21,6 +21,12 @@
 				"selector": [
 					{
 						"filenamePattern": "*.obj"
+					},
+					{
+						"filenamePattern": "*.vtk"
+					},
+					{
+						"filenamePattern": "*.bdf"
 					}
 				]
 			}

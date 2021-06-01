@@ -5,11 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        html, body, #container {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-    <div id='name'>123</div>
-    <button id='btn'>btn</button>
+    <!-- <div id='name'>123</div> -->
+    <!-- <button id='btn'>btn</button> -->
+    <div id='container' style="width: 100%; height: 100%;"></div>
 </body>
-<script src="./index.js">
-</script>
+
+<script src="./build/three.js"></script>
+<script src="./js/util/Utils.js"></script>
+
+<script src="./js/core/mesh/AlignedBox.js"></script>
+<script src="./js/core/mesh/Mesh.js"></script>
+<script src="./js/core/mesh/Files.js"></script>
+<script src="./js/core/app/AppGroup.js"></script>
+<script src="./js/core/app/App.js"></script>
+
+<script src="./js/command/receiver/app/AddAppReceiver.js"></script>
+<script src="./js/command/receiver/app/CreateAppsFromFileReceiver.js"></script>
+<script src="./js/command/receiver/camera/SetCameraAxisReceiver.js"></script>
+<script src="./js/command/receiver/camera/SetCameraDataReceiver.js"></script>
+<script src="./js/command/receiver/component/CreateComponentReceiver.js"></script>
+<script src="./js/command/receiver/load/LoadFileReceiver.js"></script>
+<script src="./js/controller/RenderController.js"></script>
+<script src="./js/core/app/AppThreeJSData.js"></script>
+<script src="./js/core/controls/TrackballControls.js"></script>
+<script src="./js/core/fileLoader/FileLoader.js"></script>
+<script src="./js/core/fileLoader/loader/BDFLoader.js"></script>
+<script src="./js/core/fileLoader/loader/VTKLoader.js"></script>
+<script src="./js/core/fileLoader/loader/OBJLoader.js"></script>
+<script src="./js/core/mesh/Buffers.js"></script>
+<script src="./js/core/mesh/Builder.js"></script>
+<script src="./js/core/mesh/Materials.js"></script>
+<script src="./js/core/mesh/MeshData.js"></script>
+<script src="./js/core/mesh/Renderables.js"></script>
+<script src="./js/core/queue/Publisher.js"></script>
+<script src="./js/core/render/Render.js"></script>
+<script src="./js/core/render/RenderThreeJsData.js"></script>
+<script src="./js/core/viewHelper/ViewHelper.js"></script>
+<script src="./js/service/app/AppDataService.js"></script>
+<script src="./js/service/app/AppGroupService.js"></script>
+<script src="./js/service/app/AppService.js"></script>
+<script src="./js/service/mesh/MeshService.js"></script>
+<script src="./js/service/render/RenderDataService.js"></script>
+<script src="./js/service/render/RenderService.js"></script>
+<script src="./js/setting/GlobalSettings.js"></script>
+
+<script src="./index.js"></script>
 </html>

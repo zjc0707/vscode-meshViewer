@@ -3,6 +3,7 @@ import * as vscode from 'vscode';
 import { disposeAll } from './dispose';
 import { getWebViewContent } from './extension';
 import { ViewerDocument, ViewerEdit } from './viewerDocument';
+import * as Path from 'path'
 
 export class ViewerEditorProvider implements vscode.CustomEditorProvider<ViewerDocument> {
 
@@ -99,21 +100,23 @@ export class ViewerEditorProvider implements vscode.CustomEditorProvider<ViewerD
         webviewPanel.webview.onDidReceiveMessage(e => {
             if (e.type === 'ready') {
                 console.log('ready');
-				if (document.uri.scheme === 'untitled') {
-					this.postMessage(webviewPanel, 'init_untitiled', {
-						untitled: true,
-						editable: true,
-					});
-				} else {
-					const editable = vscode.workspace.fs.isWritableFileSystem(document.uri.scheme);
+                if (document.uri.scheme === 'untitled') {
+                    this.postMessage(webviewPanel, 'init_untitiled', {
+                        untitled: true,
+                        editable: true,
+                    });
+                } else {
+                    const editable = vscode.workspace.fs.isWritableFileSystem(document.uri.scheme);
 
                     const t = new TextDecoder('utf-8');
-					this.postMessage(webviewPanel, 'init', {
-						value: t.decode(document.documentData),
-						editable,
-					});
-				}
-			}
+                    const basename = Path.basename(document.uri.path)
+                    this.postMessage(webviewPanel, 'init', {
+                        fileContext: t.decode(document.documentData),
+                        fileName: basename,
+                        editable,
+                    });
+                }
+            }
         });
     }
 
@@ -128,23 +131,23 @@ export class ViewerEditorProvider implements vscode.CustomEditorProvider<ViewerD
     }
 
     private postMessage(panel: vscode.WebviewPanel, type: string, body: any): void {
-		panel.webview.postMessage({ type, body });
-	}
+        panel.webview.postMessage({ type, body });
+    }
 
-	private onMessage(document: ViewerDocument, message: any) {
-		switch (message.type) {
-			// case 'stroke':
-			// 	document.makeEdit(message as ViewerEdit);
-			// 	return;
+    private onMessage(document: ViewerDocument, message: any) {
+        switch (message.type) {
+            // case 'stroke':
+            // 	document.makeEdit(message as ViewerEdit);
+            // 	return;
 
-			case 'response':
-				{
-					const callback = this._callbacks.get(message.requestId);
-					callback?.(message.body);
-					return;
-				}
-		}
-	}
+            case 'response':
+                {
+                    const callback = this._callbacks.get(message.requestId);
+                    callback?.(message.body);
+                    return;
+                }
+        }
+    }
 }
 
 /**
