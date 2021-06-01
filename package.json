@@ -1,8 +1,12 @@
 {
-	"name": "helloworld",
-	"displayName": "helloWorld",
-	"description": "123",
+	"name": "mesh_viewer",
+	"displayName": "meshViewer",
+	"description": "view vtk/obj/bdf",
 	"version": "0.0.1",
+	"author": {
+		"name": "zjc",
+		"email": "624779572@qq.com"
+	},
 	"engines": {
 		"vscode": "^1.56.0"
 	},
@@ -10,14 +14,14 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCustomEditor:jcWebView"
+		"onCustomEditor:meshViewer"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"customEditors": [
 			{
-				"viewType": "jcWebView",
-				"displayName": "jc webView",
+				"viewType": "meshViewer",
+				"displayName": "meshViewer",
 				"selector": [
 					{
 						"filenamePattern": "*.obj"
