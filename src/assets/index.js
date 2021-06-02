@@ -1,4 +1,15 @@
 RenderController.Instance.init(document.getElementById('container'));
+const statusDiv = document.getElementById('status')
+RenderController.Instance.progress = (data) => {
+    switch (data.status) {
+        case 'success':
+            statusDiv.innerText = 'success'
+            break
+        case 'failure':
+            statusDiv.innerText = `failure: ${data.msg}`
+            break
+    }
+}
 const vscode = acquireVsCodeApi();
 
 window.addEventListener('message', async e => {

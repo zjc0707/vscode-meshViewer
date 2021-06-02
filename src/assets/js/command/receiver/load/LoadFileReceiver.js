@@ -23,14 +23,18 @@ class LoadFileReceiver {
             this.fileContext,
             this.fileName,
             isStp
-            )
-      
+        )
+
         r.do()
-        
+
         const apps = r.apps
-        if (apps.length === 0) { return }
-        
-        const r1 = new SetCameraAxisReceiver([0, 0, 1], AppService.Instance.getAABB(...apps)) 
+        if (apps.length === 0) {
+            RenderController.Instance.progress({ status: 'failure', msg: 'create fail' })
+            return
+        }
+
+        const r1 = new SetCameraAxisReceiver([0, 0, 1], AppService.Instance.getAABB(...apps))
         r1.do()
+        RenderController.Instance.progress({ status: 'success' })
     }
 }

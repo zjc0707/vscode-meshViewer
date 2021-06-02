@@ -8,6 +8,19 @@ class RenderController {
 
     /**
      * 
+     * @param {{
+     *  status: 'success' | 'failure' | 'doing';
+     *  msg: string;
+     *  progress: number,
+     *  count: number
+     * }} progressData 
+     */
+    progress = (progressData) => {
+
+    }
+
+    /**
+     * 
      * @param {HTMLElement} container 
      */
     init(container) {
