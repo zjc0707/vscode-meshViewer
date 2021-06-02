@@ -16,7 +16,7 @@ Preview vtk/obj/bdf in VSCode
    - bdf
 2. Basic camera operations:  move/rotate/pan
 
-![image-20210602105145634](images/main.png)
+![main](images/main.png)
 
 ## Requirements
 
