@@ -2,7 +2,7 @@
 	"name": "meshviewer",
 	"displayName": "meshViewer",
 	"description": "view vtk/obj/bdf",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "zjc",
 	"repository": {
 		"type": "git",
