@@ -24,7 +24,7 @@ export class ViewerEditorProvider implements vscode.CustomEditorProvider<ViewerD
             });
     }
 
-    private static readonly viewType = 'jcWebView';
+    private static readonly viewType = 'meshViewer';
 
     private readonly webviews = new WebviewCollection();
 
