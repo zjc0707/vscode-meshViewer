@@ -20,7 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() {}
 
 export function getWebViewContent(context: vscode.ExtensionContext) {
-	const templatePath = 'src/assets/index.html';
+	const templatePath = 'assets/index.html';
 	// const templatePath = 'src/assets/examples/misc_animation_groups.html';
 	const resourcePath = path.join(context.extensionPath, templatePath);
     const dirPath = path.dirname(resourcePath);
