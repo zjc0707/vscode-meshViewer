@@ -1,9 +1,3 @@
-# Change Log
+##### 0.0.2 (2021-06-02)
 
-All notable changes to the "helloWorld" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-
-- Initial release
+- Initial Release

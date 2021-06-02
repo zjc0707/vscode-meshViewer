@@ -20,7 +20,7 @@ Preview vtk/obj/bdf in VSCode
 
 ## Requirements
 
-Visual Studio Code v1.49.0
+Visual Studio Code v1.56.0
 
 ## Credits
 

@@ -18,6 +18,15 @@
 	"categories": [
 		"Other"
 	],
+	"keywords": [
+		"vscode",
+		"3d",
+		"mesh",
+		"viewer",
+		"obj",
+		"vtk",
+		"bdf"
+	],
 	"activationEvents": [
 		"onCustomEditor:meshViewer"
 	],
