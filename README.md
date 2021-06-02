@@ -1,4 +1,4 @@
-# meshViewer README
+# [meshViewer](https://github.com/zjc0707/vscode-meshViewer)
 
 Preview vtk/obj/bdf in VSCode
 
@@ -16,7 +16,7 @@ Preview vtk/obj/bdf in VSCode
    - bdf
 2. Basic camera operations:  move/rotate/pan
 
-![image-20210602105145634](https://github.com/zjc0707/vscode-meshViewer/tree/master/images/image-20210602105145634.png)
+![image-20210602105145634](images/main.png)
 
 ## Requirements
 
