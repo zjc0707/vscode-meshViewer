@@ -6,17 +6,11 @@ import { ViewerDocument, ViewerEdit } from './viewerDocument';
 import * as Path from 'path'
 
 export class ViewerEditorProvider implements vscode.CustomEditorProvider<ViewerDocument> {
-
-    private static newPawDrawFileId = 1;
-
     public static register(context: vscode.ExtensionContext): vscode.Disposable {
         return vscode.window.registerCustomEditorProvider(
             ViewerEditorProvider.viewType,
             new ViewerEditorProvider(context),
             {
-                // For this demo extension, we enable `retainContextWhenHidden` which keeps the 
-                // webview alive even when it is not visible. You should avoid using this setting
-                // unless is absolutely required as it does have memory overhead.
                 webviewOptions: {
                     retainContextWhenHidden: true,
                 },
@@ -136,10 +130,6 @@ export class ViewerEditorProvider implements vscode.CustomEditorProvider<ViewerD
 
     private onMessage(document: ViewerDocument, message: any) {
         switch (message.type) {
-            // case 'stroke':
-            // 	document.makeEdit(message as ViewerEdit);
-            // 	return;
-
             case 'response':
                 {
                     const callback = this._callbacks.get(message.requestId);

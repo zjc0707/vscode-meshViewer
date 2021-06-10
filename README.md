@@ -17,7 +17,6 @@ Preview vtk/obj/bdf in VSCode
 2. Basic camera operations:  move/rotate/pan
 
 ![main](images/main.png)
-
 ## Requirements
 
 Visual Studio Code v1.56.0
